@@ -66,6 +66,7 @@ function init() {
     list[i] = p;
   }
 
+  /*cursor setup*/
   container.addEventListener( 'mousemove', function(e) {
 
     bounds = container.getBoundingClientRect();
@@ -81,6 +82,7 @@ function init() {
   
   container.appendChild( canvas );
 }
+
 
 function step() {
 
@@ -104,14 +106,14 @@ function step() {
       d = ( dx = mx - p.x ) * dx + ( dy = my - p.y ) * dy;
       f = -THICKNESS / d;
 
-      /*if particle is close to the cursor...*/
+      /*if particle is close to the cursor..*/
       if ( d < THICKNESS ) {
         t = Math.atan2( dy, dx );
         p.vx += f * Math.cos(t);
         p.vy += f * Math.sin(t);
       }
 
-      
+      /*moving back to original position*/
       p.x += ( p.vx *= DRAG ) + (p.ox - p.x) * EASE;
       p.y += ( p.vy *= DRAG ) + (p.oy - p.y) * EASE;
 
@@ -132,6 +134,7 @@ function step() {
 
   if ( stats ) stats.end();
 
+  /*keep animating*/
   requestAnimationFrame( step );
 }
 
