@@ -1,10 +1,11 @@
 
+/*Initialize variables*/
 var NUM_PARTICLES = ( ( ROWS = 200 ) * ( COLS = 300 ) ),
     THICKNESS = Math.pow( 70, 2 ),
     SPACING = 3,
     MARGIN = 200,
     COLOR = 620,
-    DRAG = 0.99,
+    DRAG = 0.97,
     EASE = 0.25,
 
     container,
@@ -26,6 +27,8 @@ var NUM_PARTICLES = ( ( ROWS = 200 ) * ( COLS = 300 ) ),
     r, c
     ;
 
+  
+/*set initial particle placement*/ 
 particle = {
   vx: 0,
   vy: 0,
@@ -33,8 +36,10 @@ particle = {
   y: 0
 };
 
+/*function initialize - this will run through once*/
 function init() {
 
+  /*set up container and canvas*/
   container = document.getElementById( 'container' );
   canvas = document.createElement( 'canvas' );
   
@@ -50,11 +55,13 @@ function init() {
   container.style.marginLeft = Math.round( w * -0.5 ) + 'px';
   container.style.marginTop = Math.round( h * -0.5 ) + 'px';
   
+  /*draw particles*/
   for ( i = 0; i < NUM_PARTICLES; i++ ) {
     
     p = Object.create( particle );
     p.x = p.ox = MARGIN + SPACING * ( i % COLS );
     p.y = p.oy = MARGIN + SPACING * Math.floor( i / COLS );
+    
     
     list[i] = p;
   }
@@ -97,13 +104,14 @@ function step() {
       d = ( dx = mx - p.x ) * dx + ( dy = my - p.y ) * dy;
       f = -THICKNESS / d;
 
-
+      /*if particle is close to the cursor...*/
       if ( d < THICKNESS ) {
         t = Math.atan2( dy, dx );
         p.vx += f * Math.cos(t);
         p.vy += f * Math.sin(t);
       }
 
+      
       p.x += ( p.vx *= DRAG ) + (p.ox - p.x) * EASE;
       p.y += ( p.vy *= DRAG ) + (p.oy - p.y) * EASE;
 
