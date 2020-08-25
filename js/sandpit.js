@@ -121,6 +121,7 @@ function step() {
 
   } else {
 
+    /*work with the canvas 2D api*/
     b = ( a = ctx.createImageData( w, h ) ).data;
 
     for ( i = 0; i < NUM_PARTICLES; i++ ) {
