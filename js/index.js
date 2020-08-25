@@ -94,7 +94,7 @@ function step() {
     if ( !man ) {
 
       t = +new Date() * 0.001;
-      mx = w * 0.5 + ( Math.cos( t * 2.1 ) * Math.cos( t * 0.9 ) * w * 0.45 );
+      mx = w * 0.5 + ( Math.cos( t * 1.1 ) * Math.cos( t * 0.9 ) * w * 0.45 );
       my = h * 0.5 + ( Math.sin( t * 3.2 ) * Math.tan( Math.sin( t * 0.8 ) ) * h * 0.45 );
     }
       
