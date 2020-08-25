@@ -1,21 +1,11 @@
 
-var NUM_PARTICLES = ( ( ROWS = 100 ) * ( COLS = 300 ) ),
-    THICKNESS = Math.pow( 80, 2 ),
+var NUM_PARTICLES = ( ( ROWS = 200 ) * ( COLS = 300 ) ),
+    THICKNESS = Math.pow( 70, 2 ),
     SPACING = 3,
-    MARGIN = 100,
-    COLOR = 220,
-    DRAG = 0.95,
+    MARGIN = 200,
+    COLOR = 620,
+    DRAG = 0.99,
     EASE = 0.25,
-    
-    /*
-    
-    used for sine approximation, but Math.sin in Chrome is still fast enough :)http://jsperf.com/math-sin-vs-sine-approximation
-
-    B = 4 / Math.PI,
-    C = -4 / Math.pow( Math.PI, 2 ),
-    P = 0.225,
-
-    */
 
     container,
     particle,
@@ -102,8 +92,11 @@ function step() {
       
       p = list[i];
       
+
+    /*cursor placement*/
       d = ( dx = mx - p.x ) * dx + ( dy = my - p.y ) * dy;
       f = -THICKNESS / d;
+
 
       if ( d < THICKNESS ) {
         t = Math.atan2( dy, dx );
